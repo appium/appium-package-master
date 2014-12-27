@@ -20,7 +20,7 @@ gulp.task('rimraf-package', function() {
 
 gulp.task('create-package', ['rimraf-package'], function() {
   var packageName = getPackageName();
-  return gulp.src('**', {cwd:'base'})
+  return gulp.src(['**/*','**/.*'], {cwd:'base'})
     .pipe(replace(/new-appium-package/g, packageName))
     .pipe(gulp.dest('./out/' + packageName));
 });
