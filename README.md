@@ -9,5 +9,5 @@ A set of tools to create and manage appium packages.
 gulp create-package -n <package-name>
 ```
 
-package will be created in the out/<package-name>
+The package will be created in the `out/<package-name>`.
 
