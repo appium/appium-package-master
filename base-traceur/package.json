@@ -27,7 +27,8 @@
     "q": "^1.1.2"
   },
   "scripts": {
-    "test": "echo 'running tests'"
+    "test": "./node_modules/.bin/gulp once",
+    "watch": "./node_modules/.bin/gulp"
   },
   "devDependencies": {
     "appium-gulp-plugins": "0.0.7",
