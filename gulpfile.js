@@ -19,7 +19,7 @@ function getPackageName() {
 
 gulp.task('clean', function () {
   return gulp.src(['base/node_modules','base-traceur/nodE_modules',
-      'base-traceur/build'], {read: false})
+      'base-traceur/build', 'out'], {read: false})
     .pipe(clean());
 });
 
