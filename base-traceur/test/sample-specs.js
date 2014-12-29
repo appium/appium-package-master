@@ -1,6 +1,6 @@
 // transpile:mocha
 
-import {sample} from '../index';
+import {sample} from '../..';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import 'mochawait';
