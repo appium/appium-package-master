@@ -23,7 +23,7 @@
     "lib": "lib"
   },
   "dependencies": {
-    "appium-transpile-runtime": "0.0.2",
+    "appium-transpile-runtime": "0.0.3",
     "q": "^1.1.2"
   },
   "scripts": {
