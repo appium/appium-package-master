@@ -3,13 +3,11 @@ var gulp = require('gulp'),
     rimraf = require('gulp-rimraf'),
     replace = require('gulp-replace');
 
-var packageName;
+var argv = require('yargs').alias('n', 'name').parse(process.argv);
+
 function getPackageName() {
-  if(!packageName) {
-    var argv = require('yargs').alias('n', 'name').demand('name').argv;
-    packageName = argv['name'];
-  }
-  return packageName;
+  if(!argv['name']) throw new Error('Missing package name.');
+  return argv['name'];
 }
 
 gulp.task('rimraf-package', function() {
