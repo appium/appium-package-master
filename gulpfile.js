@@ -3,7 +3,10 @@ var gulp = require('gulp'),
     rimraf = require('gulp-rimraf'),
     replace = require('gulp-replace');
 
-var argv = require('yargs').alias('n', 'name').parse(process.argv);
+var argv = require('yargs')
+  .count('notraceur')
+  .alias('n', 'name')
+  .argv;
 
 function getPackageName() {
   if(!argv['name']) throw new Error('Missing package name.');
@@ -18,7 +21,7 @@ gulp.task('rimraf-package', function() {
 
 gulp.task('create-package', ['rimraf-package'], function() {
   var packageName = getPackageName();
-  return gulp.src(['**/*','**/.*'], {cwd:'base'})
+  return gulp.src(['**/*','**/.*'], {cwd: argv.notraceur ? 'base' : 'base-traceur'})
     .pipe(replace(/new-appium-package/g, packageName))
     .pipe(gulp.dest('./out/' + packageName));
 });
