@@ -9,7 +9,8 @@ var gulp = require('gulp'),
     runSequence = Q.denodeify(require('run-sequence')),
     jshint = require('gulp-jshint'),
     jscs = require('gulp-jscs'),
-    clean = require('gulp-clean');
+    vinylPaths = require('vinyl-paths'),
+    del = require('del');
 
 var argv = require('yargs')
             .count('prod')
@@ -17,7 +18,7 @@ var argv = require('yargs')
 
 gulp.task('clean', function () {
   gulp.src('build', {read: false})
-    .pipe(clean());
+    .pipe(vinylPaths(del));
 });
 
 gulp.task('transpile', function () {

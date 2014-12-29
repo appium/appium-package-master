@@ -1,9 +1,9 @@
 "use strict";
 
 var gulp = require('gulp'),
-    rimraf = require('gulp-rimraf'),
     replace = require('gulp-replace'),
-    clean = require('gulp-clean'),
+    vinylPaths = require('vinyl-paths'),
+    del = require('del'),
     jshint = require('gulp-jshint'),
     jscs = require('gulp-jscs');
 
@@ -20,7 +20,7 @@ function getPackageName() {
 gulp.task('clean', function () {
   return gulp.src(['base/node_modules','base/*.log', 'base-traceur/nodE_modules',
       'base-traceur/build', 'base-traceur/*.log', 'out'], {read: false})
-    .pipe(clean());
+    .pipe(vinylPaths(del));
 });
 
 gulp.task('jscs', function () {
@@ -39,13 +39,13 @@ gulp.task('jshint', function () {
 
 gulp.task('lint',['jshint','jscs']);
 
-gulp.task('rimraf-package', function () {
+gulp.task('del-package', function () {
   var packageName = getPackageName();
   return gulp.src('./out/' + packageName, {read: false})
-    .pipe(rimraf());
+    .pipe(vinylPaths(del));
 });
 
-gulp.task('create-package', ['rimraf-package'], function () {
+gulp.task('create-package', ['del-package'], function () {
   var packageName = getPackageName();
   return gulp.src(['**/*','**/.*'], {cwd: argv.notraceur ? 'base' : 'base-traceur'})
     .pipe(replace(/new-appium-package/g, packageName))
