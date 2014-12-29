@@ -17,7 +17,7 @@ var argv = require('yargs')
             .argv;
 
 gulp.task('clean', function () {
-  gulp.src('build', {read: false})
+  return gulp.src('build', {read: false})
     .pipe(vinylPaths(del));
 });
 
