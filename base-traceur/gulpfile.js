@@ -74,7 +74,7 @@ gulp.task('test', ['transpile'],  function () {
 
 process.env.APPIUM_NOTIF_BUILD_NAME = 'new-appium-package';
 
-spawnWatcher.configure('watch', ['lib/**/*.js','test/**/*.js'], function () {
+spawnWatcher.configure('watch', ['index.js', 'lib/**/*.js','test/**/*.js'], function () {
   return runSequence('clean', 'lint', 'transpile', 'test');
 });
 
