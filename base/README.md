@@ -6,7 +6,7 @@ Work in progress, stay tuned!
 ## Watch
 
 ```
-npm run-script watch
+npm run watch
 ```
 
 ## Test
