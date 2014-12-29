@@ -8,11 +8,17 @@ var gulp = require('gulp'),
     Transpiler = require('appium-gulp-plugins').Transpiler,
     runSequence = Q.denodeify(require('run-sequence')),
     jshint = require('gulp-jshint'),
-    jscs = require('gulp-jscs');
+    jscs = require('gulp-jscs'),
+    clean = require('gulp-clean');
 
 var argv = require('yargs')
             .count('prod')
             .argv;
+
+gulp.task('clean', function () {
+  gulp.src('build', {read: false})
+    .pipe(clean());
+});
 
 gulp.task('transpile', function () {
   var transpiler = new Transpiler();
@@ -68,11 +74,11 @@ gulp.task('test', ['transpile'],  function () {
 process.env.APPIUM_NOTIF_BUILD_NAME = 'new-appium-package';
 
 spawnWatcher.configure('watch', ['lib/**/*.js','test/**/*.js'], function () {
-  return runSequence('lint', 'transpile', 'test');
+  return runSequence('clean', 'lint', 'transpile', 'test');
 });
 
 gulp.task('once', function () {
-  return runSequence('lint', 'transpile','test');
+  return runSequence('clean','lint', 'transpile','test');
 });
 
 gulp.task('default', ['watch']);
