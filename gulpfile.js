@@ -8,7 +8,7 @@ var gulp = require('gulp'),
     jscs = require('gulp-jscs');
 
 var argv = require('yargs')
-  .count('notraceur')
+  .count('nobabel')
   .alias('n', 'name')
   .argv;
 
@@ -18,8 +18,8 @@ function getPackageName() {
 }
 
 gulp.task('clean', function () {
-  return gulp.src(['base/node_modules','base/*.log', 'base-traceur/nodE_modules',
-      'base-traceur/build', 'base-traceur/*.log', 'out'], {read: false})
+  return gulp.src(['base/node_modules','base/*.log', 'base-babel/node_modules',
+      'base-babel/build', 'base-babel/*.log', 'out'], {read: false})
     .pipe(vinylPaths(del));
 });
 
@@ -47,7 +47,7 @@ gulp.task('del-package', function () {
 
 gulp.task('create-package', ['del-package'], function () {
   var packageName = getPackageName();
-  return gulp.src(['**/*','**/.*'], {cwd: argv.notraceur ? 'base' : 'base-traceur'})
+  return gulp.src(['**/*','**/.*'], {cwd: argv.nobabel ? 'base' : 'base-babel'})
     .pipe(replace(/new-appium-package/g, packageName))
     .pipe(gulp.dest('./out/' + packageName));
 });
