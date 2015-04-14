@@ -23,9 +23,9 @@
     "lib": "lib"
   },
   "dependencies": {
-    "babel-runtime": "^5.0.12",
+    "babel-runtime": "^5.1.9",
     "source-map-support": "^0.2.10",
-    "q": "^1.1.2"
+    "q": "^1.2.0"
   },
   "scripts": {
     "prepublish": "./node_modules/.bin/gulp prepublish",
@@ -34,10 +34,10 @@
   },
   "devDependencies": {
     "appium-gulp-plugins": "^1.1.0",
-    "chai": "^1.10.0",
-    "chai-as-promised": "^4.1.1",
+    "chai": "^2.2.0",
+    "chai-as-promised": "^4.3.0",
     "gulp": "^3.8.11",
-    "mochawait": "^1.1.0",
-    "yargs": "^1.3.3"
+    "mochawait": "^2.0.0",
+    "yargs": "^3.7.1"
   }
 }
