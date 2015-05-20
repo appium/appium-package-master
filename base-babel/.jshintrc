@@ -7,6 +7,5 @@
   "trailing": true,
   "indent": 2,
   "esnext": true,
-  "elision": true,
   "experimental": ["asyncawait"]
 }
