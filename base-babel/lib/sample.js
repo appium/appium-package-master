@@ -1,6 +1,6 @@
-import Q from 'q';
+import B from 'bluebird';
 
-let p = new Q('123');
+let p = new B.resolve('123');
 
 async function func() {
   return await p;
