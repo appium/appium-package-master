@@ -3,7 +3,6 @@
 import {sample} from '../..';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
-import 'mochawait';
 
 chai.should();
 chai.use(chaiAsPromised);
@@ -14,4 +13,3 @@ describe('sample', () => {
     res.should.equal('123');
   });
 });
-
