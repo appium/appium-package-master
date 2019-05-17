@@ -1,0 +1,11 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "base-babel/package.json",
+        "base/package.json",
+        "package.json"
+      ]
+    }
+  }
+}
