@@ -7,11 +7,10 @@ A set of tools to create and manage appium packages.
 
 ```
 # using es7/babel
-gulp create-package -n <package-name>
+npx gulp package:create -n <package-name>
 
 # regular es5
-gulp create-package --nobabel -n <package-name>
+npx gulp package:create --nobabel -n <package-name>
 ```
 
 The package will be created in the `out/<package-name>`.
-
