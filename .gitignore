@@ -1,4 +1,9 @@
 node_modules
-out
+build
+coverage
 *.log
-
+.DS_Store
+package-lock.json*
+.nyc_output/
+test-results.xml
+out

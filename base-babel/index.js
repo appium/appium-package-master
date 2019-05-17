@@ -1,4 +1,3 @@
-import {default as sample} from './lib/sample';
+import { default as sample } from './lib/sample';
 
-export {sample};
-
+export { sample };

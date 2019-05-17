@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-var sample = require('..'),
-    chai = require('chai');
+const sample = require('..');
+const chai = require('chai');
 
 chai.should();
 

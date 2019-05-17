@@ -22,17 +22,34 @@
   "directories": {
     "lib": "lib"
   },
+  "files": [
+    "base",
+    "base-babel",
+    "gulpfile.js"
+  ],
   "dependencies": {},
   "scripts": {
-    "test": "echo 'running tests'"
+    "test": "echo 'running tests'",
+    "clean": "rm -rf node_modules && rm -f package-lock.json && npm install",
+    "lint": "gulp lint",
+    "lint:fix": "gulp eslint --fix",
+    "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
+    "precommit-test": "REPORTER=dot gulp once"
   },
+  "pre-commit": [
+    "precommit-msg",
+    "precommit-test"
+  ],
   "devDependencies": {
-    "del": "^1.1.1",
-    "gulp": "^3.8.10",
-    "gulp-jscs": "^1.3.1",
-    "gulp-jshint": "^1.9.0",
-    "gulp-replace": "^0.5.0",
-    "vinyl-paths": "^1.0.0",
-    "yargs": "^3.14.0"
+    "appium-gulp-plugins": "^4.0.0",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "del": "^4.1.1",
+    "gulp": "^4.0.0",
+    "gulp-debug": "^4.0.0",
+    "gulp-replace": "^1.0.0",
+    "pre-commit": "^1.1.3",
+    "vinyl-paths": "^2.1.0",
+    "yargs": "^13.2.4"
   }
 }
