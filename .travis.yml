@@ -6,13 +6,15 @@ jobs:
       script: npm run lint
     - stage: package generation
       name: babel package
-      install:
+      script:
         - npx gulp package:create -n babel-test
         - cd out/babel-test
         - npm run clean
+        - npm test
     - stage:
       name: non-babel package
-      install:
+      script:
         - npx gulp package:create --nobabel -n non-babel-test
         - cd out/non-babel-test
         - npm run clean
+        - npm test
