@@ -1,6 +1,8 @@
 appium-package-master
 ===================
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/appium/appium-package-master.svg)](https://greenkeeper.io/)
+
 A set of tools to create and manage appium packages.
 
 ##Create package
