@@ -24,14 +24,15 @@
   },
   "files": [
     "index.js",
-    "lib",
+    "lib"
   ],
   "dependencies": {
     "q": "^1.1.2"
   },
   "scripts": {
     "test": "gulp once",
-    "watch": "gulp watch"
+    "watch": "gulp watch",
+    "clean": "rm -rf node_modules && rm -f package-lock.json && npm install"
   },
   "devDependencies": {
     "appium-gulp-plugins": "^4.0.0",

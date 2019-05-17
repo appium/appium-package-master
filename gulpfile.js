@@ -1,42 +1,53 @@
-"use strict";
+'use strict';
 
-var gulp = require('gulp'),
-    replace = require('gulp-replace'),
-    vinylPaths = require('vinyl-paths'),
-    del = require('del');
+const gulp = require('gulp');
+const boilerplate = require('appium-gulp-plugins').boilerplate.use(gulp);
+const replace = require('gulp-replace');
+const debug = require('gulp-debug');
+const vinylPaths = require('vinyl-paths');
+const del = require('del');
 
-var argv = require('yargs')
+const argv = require('yargs')
   .count('nobabel')
   .alias('n', 'name')
   .argv;
 
-function getPackageName() {
-  if (!argv.name) throw new Error('Missing package name.');
+boilerplate({
+  build: 'appium-package-master',
+  transpile: false,
+  test: false,
+});
+
+function getPackageName () {
+  if (!argv.name) {
+    throw new Error('Missing package name.');
+  }
   return argv.name;
 }
 
-gulp.task('lint', function lint (done) {
-  // TODO: make lint task
-  done();
-});
-
-gulp.task('clean', function () {
-  return gulp.src(['base/node_modules','base/*.log', 'base-babel/node_modules',
-      'base-babel/build', 'base-babel/*.log', 'out'], {read: false})
+gulp.task('package:clean', function () {
+  return gulp
+    .src([
+      'base/node_modules', 'base/*.log', 'base-babel/node_modules',
+      'base-babel/build', 'base-babel/*.log', 'out',
+    ], {read: false})
+    .pipe(debug())
     .pipe(vinylPaths(del));
 });
 
 gulp.task('package:delete', function deletePackage () {
-  var packageName = getPackageName();
+  const packageName = getPackageName();
   return gulp.src('./out/' + packageName, {read: false, allowEmpty: true})
+    .pipe(debug())
     .pipe(vinylPaths(del));
 });
 
 gulp.task('package:create', gulp.series('package:delete', function createPackage () {
-  var packageName = getPackageName();
-  return gulp.src(['**/*','**/.*'], {cwd: argv.nobabel ? 'base' : 'base-babel'})
+  const packageName = getPackageName();
+  return gulp.src(['**/*', '**/.*'], {cwd: argv.nobabel ? 'base' : 'base-babel'})
+    .pipe(debug())
     .pipe(replace(/new-appium-package/g, packageName))
     .pipe(gulp.dest('./out/' + packageName));
 }));
 
-gulp.task('default', gulp.series(['lint', 'clean']));
+gulp.task('default', gulp.series(['lint', 'package:clean']));

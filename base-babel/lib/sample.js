@@ -1,9 +1,9 @@
 import B from 'bluebird';
 
-let p = new B.resolve('123');
+const p = new B.resolve('123');
 
-async function func() {
+async function func () {
   return await p;
 }
 
-export default {func: func};
+export default { func };
